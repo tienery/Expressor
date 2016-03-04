@@ -1,5 +1,5 @@
 # Expressor
- A structural scripting language for Haxe.
+ A structural scripting language for Haxe. By structural, we're not talking about the paradigm, we're talking about the way in which source code is structured. This scripting language mploys tree-like syntax to help improve readability of code.
 
 ## Roadmap
 This is just a concept, but the idea is straight-forward.
