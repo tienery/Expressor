@@ -1,47 +1,42 @@
 # Expressor
- A YAML-like parser for conveniently creating data-oriented design and development in Haxe.
+ A structural scripting language for Haxe.
 
 ## Roadmap
-This is just a concept, but the idea is straight-forward (ideally, I could use some help perfecting it).
+This is just a concept, but the idea is straight-forward.
 
 The idea is to use YAML-like syntax to efficiently create code off the back of HScript.
 
-    # This is a comment
+    // This is a comment
     
-    bitmap : Bitmap(Assets.getBitmapData("img/haxe-logo.png"))
+    bitmap = new Bitmap(Assets.getBitmapData("img/haxe-logo.png"))
     
-    sample : Sprite
-        x : 30
-        y : 30
-        :addChild(bitmap)
+    sample = new Sprite()
+        x = 30
+        y = 30
+        addChild(bitmap)
+        graphics
+            beginFill(0xFF0000)
+            drawRect(0, 0, 50, 50)
 
-So the idea behind this is to simply create objects based on their key-value pairs as seen above, using `:` to distinguish between the keys and values.
+Everything is considered a variable on the right side of the equals sign without using "var".
 
-`sample` in the example above becomes `var sample = new Sprite();`.
-
-Because `x` is tabbed in, the parser should assume that `x` is a member variable of `sample`. So the following is generated: `sample.x = 30;`.
-
-If only a `:` is found at the start of a line, then at whichever the level it's at, it will either assume the following expression is a member of the variable the expression is enclosed in, is part of a constructor, or simply an expression on its own.
-
-We could use either a macro or HScript, so we could generate code both at runtime or compile-time. Perhaps I will put both in.
-
-So, the expression found at the bottom of `sample` generates `sample.addChild(bitmap);`.
-
-Also, `bitmap` turns to `var bitmap = new Bitmap(Assets.getBitmapData("img/haxe-logo.png"));`.
-
-Because everything on the left-side of the colon would be considered an expression by the parser, things like this should be possible:
-
-    text : "Hello, this is some text."
+    text = "Hello, this is some text."
     
-    data : {}
-        message : text
+    data = {}
+        message = text
 
 And that should convert to:
 
-    var text = "Hello, this is some text.";
-    var data = {};
+    text = "Hello, this is some text.";
+    data = {};
     data.message = text;
 
-So what has been done so far? None of it yet...
+So what has been done so far?
 
-The project is in early stages and not yet complete.
+You can pass in variables, pass a script, and execute it.
+
+Things that currently cannot be done:
+
+* Function handling
+* Macro-based code generation (including the ability to import)
+* Import-like functionality for the HScript-side.

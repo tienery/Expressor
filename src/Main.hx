@@ -1,18 +1,17 @@
 package;
 
-import openfl.display.Sprite;
-import openfl.events.Event;
-import openfl.Lib;
-import sys.FileSystem;
-import sys.io.File;
+import expressor.Parser;
 
-class Main extends Sprite
+class Main
 {
-    
-	public function new()
-	{
-		super();
-		
-	}
 
+    public static function main()
+    {
+        var parser = new Parser();
+        if (!parser.parse("info/test.doe"))
+            trace(parser.error);
+        
+        Sys.getChar(false);
+    }
+    
 }
