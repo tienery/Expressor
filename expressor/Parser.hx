@@ -94,13 +94,17 @@ class Parser
                 _script += line + "\n";
             }
             
+            #if log
+            File.saveContent("script.log", _script);
+            #end
+            
             _eval = _hparser.parseString(_script);
             
             return true;
         }
         catch (msg:String)
         {
-            error = msg;
+            error = _hparser.line + ": " + msg;
             return false;
         }
     }
