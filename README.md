@@ -44,4 +44,4 @@ And that should convert to:
 
 So what has been done so far? None of it yet...
 
-The project is in early stages, I'm currently fighting with code structure to figure out how I should layout the parse function.
+The project is in early stages and not yet complete.

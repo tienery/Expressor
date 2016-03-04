@@ -4,5 +4,8 @@ sample : Sprite
     x : 30
     y : 30
     :addChild(bitmap)
+    :graphics
+        :beginFill(0xFF0000)
+        :drawRect(0, 0, 100, 100)
 
 bitmap : Bitmap(Assets.getBitmapData("img/haxe-logo.png"))
